@@ -1,0 +1,10 @@
+[
+    {
+        "asset-name": "cy-mbedtls-acceleration",
+        "locked-commit": "release-v2.7.0"
+    },
+    {
+        "asset-name": "syspm-callbacks-psc3",
+        "locked-commit": "release-v1.0.0"
+    }
+]
