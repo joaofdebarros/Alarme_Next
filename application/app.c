@@ -6,6 +6,8 @@
  */
 
 #include "app.h"
+#include "NotifySystem.h"
+#include "power.h"
 
 app_h app;
 
@@ -38,7 +40,7 @@ bool send_response = false;
 
 uint8_t test_TX = 0xAA;
 
-uint8_t status_Button = 4;
+uint8_t status_Button = 6;
 
 /* Assign CONNECTIVITY_TASK */
 #define APP_TASK_NAME            ("Connectivity")
@@ -3581,8 +3583,8 @@ void app_task(void *pvParameters)
 
 
     		}
-    		else if(status_Button == 3){
-    			status_Button = 4;
+    		else if(status_Button == 5){
+    			status_Button = 5;
     			sendBack.properties = PROP_ASYNC;
         		app.packet.lastCmd = ALARMCMD_ADD_PGM;
         		app.packet.lastCmd_ASYNC = app.packet.lastCmd;
@@ -3597,11 +3599,19 @@ void app_task(void *pvParameters)
 
         	    pgm_start(&pgm_cmd);
         	    sendBack.data.len = 0;
-    		}
+    		}else if(status_Button == 6){
+				sirene_status_e status_operation;
+				status_operation = control_SIRENE(ON,5);
+			}
 
 
     		cy_rtos_event_clearbits(&app.app_event, APP_EVENT_BUTTON);
-    	}
+    	}else if(app.event.mask == APP_EVENT_POWER){
+			notify_type_e type_test;
+			notify_method_e method_test;
+			get_Power_notification(&type_test,&method_test);
+			cy_rtos_event_clearbits(&app.app_event, APP_EVENT_POWER);
+		}
 
     	app.event.mask = 0x00FFFFFF;
 

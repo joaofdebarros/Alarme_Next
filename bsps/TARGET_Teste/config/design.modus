@@ -323,6 +323,26 @@
                     </Parameters>
                 </Personality>
                 <Personality template="pin" version="3.0">
+                    <Block location="ioss[0].port[6].pin[0]" locked="true">
+                        <Aliases>
+                            <Alias value="SIRENE_ON"/>
+                        </Aliases>
+                    </Block>
+                    <Parameters>
+                        <Param id="DriveModes" value="CY_GPIO_DM_STRONG_IN_OFF"/>
+                        <Param id="driveStrength" value="CY_GPIO_DRIVE_1_2"/>
+                        <Param id="driveStrengthTrim" value="CY_GPIO_DRIVE_STRENGTH_DEFAULT"/>
+                        <Param id="inFlash" value="true"/>
+                        <Param id="initialState" value="0"/>
+                        <Param id="isrTrigger" value="CY_GPIO_INTR_DISABLE"/>
+                        <Param id="nonSec" value="0"/>
+                        <Param id="pullUpRes" value="CY_GPIO_PULLUP_RES_DISABLE"/>
+                        <Param id="sioOutputBuffer" value="true"/>
+                        <Param id="slewRate" value="CY_GPIO_SLEW_FAST"/>
+                        <Param id="vtrip" value="CY_GPIO_VTRIP_CMOS"/>
+                    </Parameters>
+                </Personality>
+                <Personality template="pin" version="3.0">
                     <Block location="ioss[0].port[6].pin[3]" locked="true">
                         <Aliases>
                             <Alias value="CTRL_AUXILIAR"/>
@@ -577,6 +597,20 @@
                     </Parameters>
                 </Personality>
                 <Personality template="hppass_sar_chan" version="1.0">
+                    <Block location="pass[0].sar[0].ch[10]" locked="true">
+                        <Aliases>
+                            <Alias value="AD_SIRENE"/>
+                        </Aliases>
+                    </Block>
+                    <Parameters>
+                        <Param id="avg" value="CY_HPPASS_SAR_AVG_DISABLED"/>
+                        <Param id="diff" value="false"/>
+                        <Param id="fifoLoc" value="CY_HPPASS_FIFO_DISABLED"/>
+                        <Param id="limitLoc" value="CY_HPPASS_SAR_LIMIT_DISABLED"/>
+                        <Param id="sign" value="false"/>
+                    </Parameters>
+                </Personality>
+                <Personality template="hppass_sar_chan" version="1.0">
                     <Block location="pass[0].sar[0].ch[11]" locked="true">
                         <Aliases>
                             <Alias value="AC_DETECT"/>
@@ -650,6 +684,12 @@
                     </Parameters>
                 </Personality>
                 <Personality template="hppass_sar_dir_samp" version="1.0">
+                    <Block location="pass[0].sar[0].dir_sampler[10]" locked="true"/>
+                    <Parameters>
+                        <Param id="gain" value="CY_HPPASS_SAR_SAMP_GAIN_1"/>
+                    </Parameters>
+                </Personality>
+                <Personality template="hppass_sar_dir_samp" version="1.0">
                     <Block location="pass[0].sar[0].dir_sampler[11]" locked="true"/>
                     <Parameters>
                         <Param id="gain" value="CY_HPPASS_SAR_SAMP_GAIN_1"/>
@@ -692,7 +732,7 @@
                     <Parameters>
                         <Param id="continuous" value="false"/>
                         <Param id="dirSampEn0r" value="false"/>
-                        <Param id="dirSampEn10r" value="false"/>
+                        <Param id="dirSampEn10r" value="true"/>
                         <Param id="dirSampEn11r" value="true"/>
                         <Param id="dirSampEn1r" value="false"/>
                         <Param id="dirSampEn2r" value="false"/>

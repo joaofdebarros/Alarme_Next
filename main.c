@@ -116,11 +116,8 @@ int main(void)
         CY_ASSERT(0);
     }
 
-    Cy_GPIO_Inv(LED1_PORT, LED1_PIN);
-    Cy_GPIO_Write(LED1_PORT, LED1_PIN,1);
-    Cy_GPIO_Write(CTRL_AUXILIAR_PORT, CTRL_AUXILIAR_PIN,0);
+    Cy_GPIO_Write(LED1_PORT, LED1_PIN, 0);
     Cy_GPIO_Write(CTRL_AUXILIAR_PORT, CTRL_AUXILIAR_PIN,1);
-
     /* Enable global interrupts */
     __enable_irq();
 
@@ -169,6 +166,7 @@ static void BTN_interrupt_handler_PDL()
 	volatile uint32_t test_time;
     /* Clear pin interrupt logic. Required to detect next interrupt */
     Cy_GPIO_ClearInterrupt(BUTTON_PORT, BUTTON_PIN);
+//    Cy_GPIO_Inv(SIRENE_ON_PORT, SIRENE_ON_PIN);
     //alarm_setAlarm_os(&app.app_event, APP_EVENT_LTE, 1000, ALARM_MODE_ONESHOT);
     //PowerOffA7672();
     //test_time = rtc_get_timestamp();

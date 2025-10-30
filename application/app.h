@@ -16,6 +16,7 @@
 #include "Connectivity.h"
 #include "zonas.h"
 #include "NotifySystem.h"
+#include "power.h"
 #include "timestamp.h"
 #include "watchdog.h"
 #include "eeprom.h"
